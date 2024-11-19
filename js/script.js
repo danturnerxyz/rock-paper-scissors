@@ -1,3 +1,4 @@
+const container = document.getElementById('container')
 const rock = document.getElementById('rock')
 const paper = document.getElementById('paper')
 const scissors = document.getElementById('scissors')
@@ -8,8 +9,6 @@ let computerChoice = ''
 let playerScore = 0
 let computerScore = 0
 let totalScore = `Your score: ${playerScore} - Computer Score: ${computerScore}`
-
-// Get computer choice
 
 function getComputerChoice(max) {
     let num = Math.floor(Math.random() * max);
@@ -24,19 +23,18 @@ function getComputerChoice(max) {
 
 // Get user choice
 
-rock.addEventListener('click', function(ev) {
-    playerChoice = 'rock'
+container.addEventListener('click', ev => {
+    let rps = document.querySelectorAll('.flex-item')
+    if (ev.target.closest('.flex-item')) {
+        for (i of rps) {
+            i.classList.remove('active-item')
+        }
+        ev.target.closest('.flex-item').classList.toggle('active-item')
+        playerChoice = ev.target.closest('.flex-item').id
+    }
 })
 
-paper.addEventListener('click', function(ev) {
-    playerChoice = 'paper';
-})
 
-scissors.addEventListener('click', function(ev) {
-    playerChoice = 'scissors'
-})
-
-// Check conditionals to see who wins
 
 function checkWinner(playerChoice, computerChoice) {
     if ((playerChoice == 'rock') && (computerChoice == 'scissors')) {

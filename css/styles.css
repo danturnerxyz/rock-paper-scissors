@@ -18,12 +18,17 @@
 }
 
 .flex-item {
-    border: 5px solid gold;
+    border: 5px solid blue;
+    cursor: pointer;
     display: flex;
     width: 150px;
     height: 150px;
     justify-content: center;
     align-items: center;
+}
+
+.active-item {
+    border: 5px solid gold;
 }
 
 .flex-item img {
